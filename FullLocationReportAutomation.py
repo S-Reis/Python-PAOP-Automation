@@ -24,7 +24,13 @@ def FileRenameModDate(directory, filetype):
     #copied over will not overwrite the previous month.
     dirLocPAOP = directory
     os.chdir(dirLocPAOP)
-    Lallfiles = os.listdir(dirLocPAOP)
+    Tempallfiles = os.listdir(dirLocPAOP)
+    Lallfiles= []
+    #Modifies the original list of items in directory so folders are excluded.
+    for x in Tempallfiles:
+        y = x[-4]
+        if y=='.':
+            Lallfiles.append(x)
 
     for filename in Lallfiles:
         if not filetype in filename:
@@ -64,8 +70,10 @@ def ReportsAvail(directory):
 
 #Variable Identification
 #FileCopy function
-FileCopy("C:\Users\sjolly\Desktop\Test Folder 1","C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\2013-2014")
+FileCopy("C:\Users\sjolly\Desktop\Test Folder 1","C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14")
 #FileRenameModDate function
-FileRenameModDate("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\2013-2014","DufferinPeel_Teaching_Location_PAOP")
+FileRenameModDate("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14","DufferinPeel_Teaching_Location_PAOP")
+#FileCopy function
+FileCopy("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14","C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14\Individual Months")
 #ReportsAvail function
 ReportsAvail("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14\Individual Months")
