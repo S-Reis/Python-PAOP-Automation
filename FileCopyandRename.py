@@ -1,6 +1,6 @@
 #Code in Progress
-#Last Update: 8/27/2014 8:36
-#Combination of all components needed to automate PAOP reports
+#Last Update: 8/27/2014 14:21
+#Functions to copy file and rename. Do not include function to create PAOP report!
 
 import os, shutil,os.path, datetime, xlrd, xlsxwriter, datetime, calendar,string
 
@@ -28,7 +28,7 @@ def FileRenameModDate(directory, filetype):
     Lallfiles= []
     #Modifies the original list of items in directory so folders are excluded.
     for x in Tempallfiles:
-        y = x[-4]
+        y = x[-5]
         if y=='.':
             Lallfiles.append(x)
 
@@ -42,31 +42,7 @@ def FileRenameModDate(directory, filetype):
         temp_name = filetype + "_" + str(moddate) + '.xlsx'
         os.rename(filename,temp_name)
         print 'File Renamed'
-        
-def ReportsAvail(directory):
-    #Returns a string of just the numeric month date in file names in the directory.
-    dirLocPAOP = directory
-    os.chdir(dirLocPAOP)
-    Lallfiles = os.listdir(dirLocPAOP)
-
-    Lmonths= []
-    for x in Lallfiles:
-        y = x[-7]+x[-6]
-        Lmonths.append(y)
-
-    print Lmonths
-
-
-
-
-
-# Open the spreadsheet.
-
-#Add a way to create variable for filename below
-
-
-
-
+  
 
 #Variable Identification
 #FileCopy function
@@ -75,5 +51,4 @@ FileCopy("C:\Users\sjolly\Desktop\Test Folder 1","C:\Users\sjolly\Desktop\TestFo
 FileRenameModDate("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14","DufferinPeel_Teaching_Location_PAOP")
 #FileCopy function
 FileCopy("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14","C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14\Individual Months")
-#ReportsAvail function
-ReportsAvail("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14\Individual Months")
+
