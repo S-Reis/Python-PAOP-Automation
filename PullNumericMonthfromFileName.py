@@ -1,14 +1,18 @@
-#Testing to return just the numeric month date in file name
-
+#Complete 8/27/3014 8:35
+#Returns a string of just the numeric month date in file names in the directory.
 import os.path, string
+def ReportsAvail(directory):
+    dirLocPAOP = directory
+    os.chdir(dirLocPAOP)
+    Lallfiles = os.listdir(dirLocPAOP)
 
-directory = "C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14\Individual Months"
+    Lmonths= []
+    for x in Lallfiles:
+        y = x[-7]+x[-6]
+        Lmonths.append(y)
 
-dirLocPAOP = directory
-os.chdir(dirLocPAOP)
-Lallfiles = os.listdir(dirLocPAOP)
+    print Lmonths
 
-for x in Lallfiles:
-    y = x.rstrip('5')
-    print y
-    print y[-3:]
+
+
+ReportsAvail("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14\Individual Months")

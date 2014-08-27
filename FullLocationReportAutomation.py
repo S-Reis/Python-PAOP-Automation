@@ -1,6 +1,8 @@
+#Code in Progress
+#Last Update: 8/27/2014 8:36
 #Combination of all components needed to automate PAOP reports
 
-import os, shutil,os.path, datetime, xlrd, xlsxwriter, datetime, calendar
+import os, shutil,os.path, datetime, xlrd, xlsxwriter, datetime, calendar,string
 
 def FileCopy(OrigDir, NewDir):
     #This function will copy files from one folder(OrigDir) to a new folder(NewDir).
@@ -35,6 +37,21 @@ def FileRenameModDate(directory, filetype):
         os.rename(filename,temp_name)
         print 'File Renamed'
         
+def ReportsAvail(directory):
+    #Returns a string of just the numeric month date in file names in the directory.
+    dirLocPAOP = directory
+    os.chdir(dirLocPAOP)
+    Lallfiles = os.listdir(dirLocPAOP)
+
+    Lmonths= []
+    for x in Lallfiles:
+        y = x[-7]+x[-6]
+        Lmonths.append(y)
+
+    print Lmonths
+
+
+
 
 
 # Open the spreadsheet.
@@ -50,4 +67,5 @@ def FileRenameModDate(directory, filetype):
 FileCopy("C:\Users\sjolly\Desktop\Test Folder 1","C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\2013-2014")
 #FileRenameModDate function
 FileRenameModDate("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\2013-2014","DufferinPeel_Teaching_Location_PAOP")
-
+#ReportsAvail function
+ReportsAvail("C:\Users\sjolly\Desktop\TestFolder 2\Dufferin-Peel\Year13-14\Individual Months")
